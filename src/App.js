@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Todos from "./Components/Todos";
+import { SingleDatePicker } from "react-dates";
+import "react-dates/initialize";
+import "react-dates/lib/css/_datepicker.css";
 
 class App extends Component {
   state = {
@@ -23,8 +26,8 @@ class App extends Component {
       <div className="App">
         <div className="container">
           <header>
-            <h1>Todo</h1>
-            <h3>Let's get some stuff done today!</h3>
+            <h1 id="main-heading">TODO</h1>
+            <h3 id="main-sub-heading">Let's get some stuff done today!</h3>
           </header>
           <form>
             <button id="add-button">
@@ -41,6 +44,18 @@ class App extends Component {
               placeholder="What are we doing today?"
               value={value}
               onChange={(e) => this.setState({ value: e.target.value })}
+            />
+
+            <SingleDatePicker
+              date={this.state.date} // momentPropTypes.momentObj or null
+              onDateChange={(date) => this.setState({ date: date })} // PropTypes.func.isRequired
+              focused={this.state.focused} // PropTypes.bool
+              id="cal"
+              placeholder="Due Date"
+              onFocusChange={() => {
+                this.setState({ focused: !this.state.focused });
+              }}
+              disabled={this.state.setHidden}
             />
           </form>
           <Todos data={todos} />
