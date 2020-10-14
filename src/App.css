@@ -50,7 +50,7 @@ header {
 }
 
 /* Todo List Items */
-li {
+.todo-item {
   color: black;
   list-style: none;
   margin-top: 1em;
@@ -61,19 +61,32 @@ li {
   padding-bottom: 1.2em;
   padding-left: 1em;
   width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-li span {
+.todo-item span {
   margin-right: 1em;
 }
 
-li p {
+.todo-item p {
   width: 40%;
 }
 
-.fa-check-circle {
-  font-size: 1.5em;
+.fa-calendar-alt {
+  color: rgb(194, 194, 194)
 }
+
+.fa-times {
+  color: rgb(255, 101, 101);
+}
+
+.date {
+  color: rgb(194, 194, 194);
+}
+
+
 
 /* Todo Input */
 #todo-form {
@@ -82,4 +95,14 @@ li p {
   height: 3em;
   width: 75%;
   padding-left: 1em;
+}
+
+/* Date Picker */
+#cal {
+  width: 100px;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+  margin: 0.5rem !important;
 }
