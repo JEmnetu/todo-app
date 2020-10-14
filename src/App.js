@@ -21,10 +21,6 @@ class App extends Component {
       : console.log("No stored todos");
   };
 
-  handleDateChange = (date) => {
-    this.setState({ date });
-  };
-
   handleSubmit = (e) => {
     const { value, todos, setHidden, date } = this.state;
     e.preventDefault();
@@ -43,7 +39,7 @@ class App extends Component {
       dueDate: date.toString().split("2020")[0],
     };
     const allTodos = [...todos, newTodo];
-    alert("Saved");
+
     this.setState({ todos: allTodos });
     this.setState({ value: "" });
     localStorage.setItem("Todos", JSON.stringify(allTodos));
@@ -101,10 +97,10 @@ class App extends Component {
             />
 
             <SingleDatePicker
-              date={this.state.date} // momentPropTypes.momentObj or null
-              onDateChange={(date) => this.setState({ date: date })} // PropTypes.func.isRequired
-              focused={this.state.focused} // PropTypes.bool
-              id="cal"
+              date={this.state.date}
+              onDateChange={(date) => this.setState({ date: date })}
+              focused={this.state.focused}
+              id="calender"
               placeholder="Due Date"
               onFocusChange={() => {
                 this.setState({ focused: !this.state.focused });
